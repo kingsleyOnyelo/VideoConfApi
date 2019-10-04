@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 const router = express.Router();
 const UserModel = require('../Model/User');
 const bcrypt = require('bcrypt');
-var randomId = require('random-id');
 const env = require('../env');
 
 
