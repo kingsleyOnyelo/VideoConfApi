@@ -60,9 +60,8 @@ router.post('/login', async (req, res)=>{
 
 router.post('/host',async (req, res)=>{
     try {
-        let len = 5;
-        let pattern = 'Ae0';
-        let id =  randomId(len, pattern);
+       
+        let id =  Math.random();
         console.log(id)
         
 
