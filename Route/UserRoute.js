@@ -4,6 +4,7 @@ const router = express.Router();
 const UserModel = require('../Model/User');
 const bcrypt = require('bcrypt');
 var randomId = require('random-id');
+const env = require('../env');
 
 
 
@@ -15,7 +16,7 @@ router.post('/', async (req, res)=>{
         const user = await UserModel.create(req.body);
         const result = user.toJSON();
         delete result.password;
-        const token =jwt.sign({id: user.id}, process.env.jwt_secret, {expiresIn: '2h'});
+        const token =jwt.sign({id: user.id}, env.jwt_secret, {expiresIn: '2h'});
 
         res.status(200).json({
             status: 'Successful request',
@@ -69,8 +70,6 @@ router.post('/host',async (req, res)=>{
 
         if(!host) return res.status(401).json({status: "error", message: "Invalid  detials"});
 
-        /* const token = jwt.sign({id: id}, SECRET);
-        console.log(token); */
         res.json({status: "success",data: {id}});
 
 
